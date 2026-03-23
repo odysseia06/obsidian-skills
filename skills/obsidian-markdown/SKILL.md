@@ -91,7 +91,7 @@ cssclasses:
 
 Default properties: `tags` (searchable labels), `aliases` (alternative note names for link suggestions), `cssclasses` (CSS classes for styling).
 
-See [PROPERTIES.md](references/PROPERTIES.md) for all property types, tag syntax rules, and advanced usage.
+For list properties containing wikilinks, use multi-line YAML arrays with quoted values (e.g., `- "[[Note]]"`). This is the format Obsidian uses natively. See [PROPERTIES.md](references/PROPERTIES.md) for details, all property types, tag syntax rules, and advanced usage.
 
 ## Tags
 
