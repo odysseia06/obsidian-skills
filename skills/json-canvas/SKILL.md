@@ -92,6 +92,8 @@ Nodes are objects placed on the canvas. Array order determines z-index: first no
 
 **Newline pitfall**: Use `\n` for line breaks in JSON strings. Do **not** use the literal `\\n` -- Obsidian renders that as the characters `\` and `n`.
 
+**Quote escaping**: Double quotes inside JSON string values **must** be escaped as `\"`. This applies to `text`, `file`, `label`, and any other string field. Unescaped quotes produce invalid JSON that Obsidian cannot render. Example: `"text": "He said \"hello\""`. For content with many special characters, consider generating the canvas JSON programmatically (e.g., `json.dumps` in Python) to handle escaping automatically.
+
 ### File Nodes
 
 | Attribute | Required | Type | Description |
@@ -219,6 +221,8 @@ Generate 16-character lowercase hexadecimal strings (64-bit random value):
 | File preview | 300-500 | 200-400 |
 | Link preview | 250-400 | 100-200 |
 
+**CJK text**: CJK (Chinese, Japanese, Korean) characters are roughly twice the width of Latin characters. For nodes containing CJK content, increase the suggested width by ~1.5x to avoid cramped text and awkward line breaks.
+
 ## Validation Checklist
 
 After creating or editing a canvas file, verify:
@@ -232,7 +236,7 @@ After creating or editing a canvas file, verify:
 7. Color presets are `"1"` through `"6"` or valid hex (e.g., `"#FF0000"`)
 8. JSON is valid and parseable
 
-If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped newlines in text content).
+If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped quotes or newlines in text content).
 
 ## Complete Examples
 
