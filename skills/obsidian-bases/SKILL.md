@@ -20,12 +20,12 @@ Base files use the `.base` extension and contain valid YAML.
 
 ```yaml
 # Global filters apply to ALL views in the base
+# Only ONE top-level key allowed (and, or, or not)
 filters:
-  # Can be a single filter string
-  # OR a recursive filter object with and/or/not
-  and: []
-  or: []
-  not: []
+  and:
+    - 'condition'
+    - not:
+        - 'excluded condition'
 
 # Define formula properties that can be used across all views
 formulas:
